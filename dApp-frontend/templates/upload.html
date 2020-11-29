@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <!-- Using Booptstrap 4 to center align everything -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <row class="text-center">
+      <h1> Upload your REC to the Renewa Marketplace </h1>
+    </row>
+
+
+    <!-- <h1 id ="CIS" > </h1> -->
+    <script>
+        //retreive the string version of contract instance
+        var contractInstanceString = localStorage.getItem("ContInst");
+        var DigitalREC = JSON.parse(contractInstanceString);
+        //document.getElementById("CIS").innerHTML = contactInstanceString;
+    </script>
+
+    <row class="text-center">
+      <form action = "http://localhost:5000/mint" method = "post">
+        <!-- <row>
+          <col>
+            <p>Enter Name:</p>
+            <p><input type = "text" name = "nm" /></p>
+          </col>
+        </row> -->
+        <row>
+          <col>
+            <p>Enter State assigned REC ID:</p>
+            <p><input type = "text" name = "state_id" /></p>
+          </col>
+        </row>
+        <row>
+          <col>
+            <p>Enter the Price you would like to sell the REC at :</p>
+            <p><input type = "text" name = "price" /></p>
+          </col>
+        </row>
+
+        <row>
+          <col>
+            <p>The market rate for your REC is</p>
+            <p> $15 </p>
+
+          </col>
+        </row>
+
+        <row>
+          <col>
+            <p><input type = "submit" value = "upload" /></p>
+          </col>
+        </row>
+      </form>
+    </row>
+
+    </body>
+</html>

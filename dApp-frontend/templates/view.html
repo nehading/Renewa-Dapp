@@ -1,0 +1,90 @@
+<html>
+
+<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+
+   <script>
+   if (typeof web3 !== 'undefined') {
+       web3 = new Web3(web3.currentProvider);
+   }
+   try {
+     var accounts =  window.ethereum.send("eth_requestAccounts");
+    } catch (err) {
+     console.log("User cancelled");
+     console.log(err);
+    }
+       console.log(accounts);
+       web3.eth.defaultAccount = accounts[0];
+
+         </script>
+  <head>
+    <!-- Using Booptstrap 4 to center align everything -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <row class="text-center">
+      <h1> ID's of RECs legally owned  </h1>
+      <h2> (according to Ropsten network blockchain) </h2>
+    </row>
+
+
+    <script>
+        var contractInstanceString = localStorage.getItem("ContInst");
+        var DigitalREC = JSON.parse(contractInstanceString);
+        //alert(contractInstanceString);
+        // var state_id = {{ state_id | safe }};
+        // var price = {{ price | safe }};
+
+        var defAccString = localStorage.getItem("acc");
+        var defAccNum = JSON.parse(defAccString);
+        //var hexAccStr = defAccNum.toString(16);
+        hexAccStr = '0xE3067ef4ADFCb8eF9585Cb2c46ff8ae88AF9aEEa';
+        defaultAccount = "0xe3067ef4adfcb8ef9585cb2c46ff8ae88af9aeea";
+
+        // var transHash = DigitalREC.methods.mintToken(state_id, price, {from: hexAccStr, gas: 200000}).call();
+        // var transHashString = JSON.stringify(transHash);
+        // document.getElementById("th").innerHTML = transHashString;
+        // document.getElementById("th").innerHTML = JSON.stringify(defAcc);
+//         DigitalREC.methods.mintToken(state_id, price).send({from: '0xE3067ef4ADFCb8eF9585Cb2c46ff8ae88AF9aEEa'})
+// .then(function(receipt){
+//     var retReceipt = receipt;
+// });
+//         document.getElementById("th").innerHTML = JSON.stringify(retReceipt);
+    console.log("look");
+    console.log(DigitalREC);
+    console.log(typeof DigitalREC);
+
+var idsOwned;
+
+DigitalRECContract.methods.RECsOwned(defaultAccount).then(function(ids){
+        idsOwned = JSON.parse(ids);
+        var display = "";
+        var i;
+        for (i = 0; i < idsOwned.length; i++) {
+          display += idsOwned[i] + "<br>";
+        }
+
+});
+
+
+    </script>
+
+    <row class="text-center">
+
+        <p> State:    California  </p>
+
+        <!-- <p> {{display}} </p> -->
+
+    </row>
+
+    <row class="text-center">
+
+        <p> Wallet Address {{defaultAccount}}}  </p>
+
+    </row>
+
+    </body>
+
+
+
+</html>

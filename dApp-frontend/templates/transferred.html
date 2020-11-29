@@ -1,0 +1,90 @@
+<html>
+
+<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+
+   <script>
+   if (typeof web3 !== 'undefined') {
+       web3 = new Web3(web3.currentProvider);
+   }
+   try {
+     var accounts =  window.ethereum.send("eth_requestAccounts");
+    } catch (err) {
+     console.log("User cancelled");
+     console.log(err);
+    }
+       console.log(accounts);
+       web3.eth.defaultAccount = accounts[0];
+
+         </script>
+
+  <head>
+    <!-- Using Booptstrap 4 to center align everything -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+
+  <body>
+
+    <row class="text-center">
+      <h1> REC ownership is transferring ... </h1>
+    </row>
+
+    <row class="text-center">
+      <p> The REC {{ rec_id }}'s ownership is being legally transferred to your account while your funds are transferred over </p>
+      <p> We are currently carrying out this transaction on the Ropsten network blockchain.</p>
+    </row>
+    <!-- <row class="text-center">
+      <p> This is the transactionHash from Ropsten network: </p>
+    </row>
+    <row class="text-center"> -->
+      <p id = "th"> </p>
+    </row>
+
+      </form>
+    </row>
+    <script>
+        var rec_id = {{rec_id | safe}};
+        var contractInstanceString = localStorage.getItem("ContInst");
+        var DigitalRECContract = JSON.parse(contractInstanceString);
+
+        var defAccString = localStorage.getItem("acc");
+        var defAccNum = JSON.parse(defAccString);
+        //var hexAccStr = defAccNum.toString(16);
+        hexAccStr = '0xE3067ef4ADFCb8eF9585Cb2c46ff8ae88AF9aEEa';
+
+        // var transHash = DigitalREC.methods.mintToken(state_id, price, {from: hexAccStr, gas: 200000}).call();
+        // var transHashString = JSON.stringify(transHash);
+        // document.getElementById("th").innerHTML = transHashString;
+        // document.getElementById("th").innerHTML = JSON.stringify(defAcc);
+//         DigitalREC.methods.mintToken(state_id, price).send({from: '0xE3067ef4ADFCb8eF9585Cb2c46ff8ae88AF9aEEa'})
+// .then(function(receipt){
+//     var retReceipt = receipt;
+// });
+//         document.getElementById("th").innerHTML = JSON.stringify(retReceipt);
+    var RECprice = 1.00;
+    console.log(DigitalREC);
+    console.log(typeof DigitalREC);
+    var DigitalRECContract = new web3.eth.Contract([
+
+    var hasht;
+    DigitalRECContract.methods.buyREC(rec_id).send({from: "0xe3067ef4adfcb8ef9585cb2c46ff8ae88af9aeea", value:web3.toWei(RECprice, "ether")}).on('transactionHash', function(hash){
+            console.log(hash);
+            hasht = hash;
+            //alert("Your REC " + state_id +  " has been successfully put into the blockchain. This is the transaction hash " + hasht);
+    }).on('receipt', function(receipt){
+        // console.log(receipt);
+        var recei = JSON.stringify(receipt);
+        <!-- web3.fromWei(web3.eth.getBalance('0x2910543af39aba0cd09dbb2d50200b3e800a63d2')); -->
+        var balance_n = 456.0 - RECprice;
+        var balance = balance_n.toString();
+
+
+        console.log(hasht);
+        alert("The transferOwnership transaction for " +  rec_id + "  has been successfully mined onto the Ropsten test network. Your new balance: " + balance + " .   This is the transaction hash: " + hasht +
+               "     This is the receipt provided by Ropsten: " + recei);
+        
+
+    });
+
+    </script>
+    </body>
+</html>

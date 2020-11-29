@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <!-- Using Booptstrap 4 to center align everything -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <row class="text-center">
+      <h1> Purchase an REC </h1>
+    </row>
+
+    <row class="text-center">
+      <form action = "http://localhost:5000/transferred" method = "post">
+        <row>
+          <col>
+            <p>Enter ID of REC you would like to purchase:</p>
+            <p><input type = "text" name = "rec_id" /></p>
+          </col>
+        </row>
+        <row>
+          <col>
+            <p><input type = "submit" value = "purchase" /></p>
+          </col>
+        </row>
+
+      </form>
+    </row>
+
+    <row class="text-center">
+      <p> ID:   35627899              Price:  $40 </p>
+      <p> ID:   57382948              Price:  $15 </p>
+      <p> ID:   37284098              Price:  $25 </p>
+    </row>
+
+    </body>
+</html>
