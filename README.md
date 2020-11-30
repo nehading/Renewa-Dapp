@@ -16,7 +16,7 @@ A user, identified by their connected Metamask account, can upload RECs. The REC
 
 A user enters their Ethereum address in order to configure Metamask.
 ![Alt text](https://github.com/neha-dhingra/Renewa/blob/main/Screenshots/PublicKey.png?raw=true "Title")
-
+<br/><br/>
 
 From the dashboard, a user can choose to upload RECs to sell on the Renewa marketplace, can buy RECs, or can view the RECs that they legally have ownership of.
 ![Alt text](https://github.com/neha-dhingra/Renewa/blob/main/Screenshots/home.png?raw=true "Title")
