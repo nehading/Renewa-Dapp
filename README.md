@@ -1,6 +1,7 @@
 # Renewa
 ## Here's to a greener future!
 A decentralized Ethereum application for trading RECs. The front end is powered by Flask and interacts with a NFT smart contract deployed on the Ropsten test network via web3.js.
+Note: This is only a prototype and is in the development stage.
 
 ### Development Steps:
 1. A Solidity ERC-721 smart contract called DigitalREC.sol (which handles all of the trading logic on Ethereum) was created, compiled, and locally deployed using the Truffle framework. The smart contract was tested using Ganache.
@@ -59,6 +60,7 @@ A user can view which REC ids they have legal ownership of (this again requires 
 <br/> <br/>
 
 
+### ERC-721 Standard Smart Contracts and External APIs:
 
 
 The deployed smart contract was also stored on IPFS and its address and ABI are stored in DigitalRECSmartContractData.json so that the smart contract is available to the public. Users can use Ethereum Scan to publicly view all transactions and smart contract logic that takes place via our dApp. Our smart contract is based off of the ERC-721 standard, a Non-Fungible token that represents a distinct object, where the values of these tokens are derived from attributes of the object (such a rarity, or in our case the specific energy generated behind the REC). Our production level dApp will use Chainlink as an oracle in order for our ethereum smart contract to query external API's such as the M-RETS API (which are needed to verify a state-issued REC as valid).  
